@@ -50,12 +50,13 @@ public class Furball {
     }
 
     public void setTipo(String tipo) {
-        this.tipo = switch (tipo){
-            case "perro" -> "perro";
-            case "gato" -> "gato";
-            case "exotico" -> "exotico";
-            default -> "";
-        };
+        switch (tipo){
+            case "perro":
+            case "gato":
+            case "exótico":
+                break;
+        }
+        this.tipo = tipo;
     }
 
     public String getHistorial() {
@@ -86,11 +87,30 @@ public class Furball {
 
     @Override
     public String toString() {
-        return "Furball{" +
-                "nombre='" + nombre + '\'' +
-                ", dueño='" + dueño + '\'' +
-                ", tipo='" + tipo + '\'' +
-                ", historial='" + historial + '\'' +
-                '}';
+        return nombre + " es un animal de tipo: " +tipo+
+                " el dueño es:" + dueño + " y su historial médico es: " + historial;
+    }
+
+    public Furball clone(){
+        return new Furball(this);
+    }
+
+    public boolean equals(Furball otro){
+        if (!this.nombre.equals(otro.nombre)){
+            return false;
+        }
+
+        if (!this.dueño.equals(otro.dueño)){
+            return false;
+        }
+
+        if (!this.tipo.equals(otro.nombre)){
+            return false;
+        }
+        if (!this.historial.equals(otro.nombre)){
+            return false;
+        }
+
+        return true;
     }
 }
